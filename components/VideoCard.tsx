@@ -15,8 +15,19 @@ const VideoCard = ({ post }: IProps) => {
 	const [isHover, setIsHover] = useState(false);
 	const [playing, setPlaying] = useState(false);
 	const [isVideoMuted, setIsVideoMuted] = useState(false);
+	const videoRef = useRef<HTMLVideoElement>(null);
 
-	const videoIconStyles = `text-black text-2xl lg:text-4xl`;
+	const onVideoPress = () => {
+		if (playing) {
+			videoRef?.current?.pause();
+			setPlaying(false);
+		} else {
+			videoRef?.current?.play();
+			setPlaying(true);
+		}
+	};
+
+	const videoIconStyles = `text-white text-2xl lg:text-4xl`;
 
 	return (
 		<div className='border-gray-200 flex flex-col border-b-2 pb-6'>
@@ -56,10 +67,11 @@ const VideoCard = ({ post }: IProps) => {
 				<div
 					className='rounded-3xl'
 					onMouseEnter={() => setIsHover(true)}
-					// onMouseLeave={() => setIsHover(false)}
+					onMouseLeave={() => setIsHover(false)}
 				>
 					<Link href='/'>
 						<video
+							ref={videoRef}
 							loop
 							className='lg:w-[600px] h-[300px] md:h-[400px] lg:h[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
 							src={post.video.asset.url}
@@ -67,22 +79,22 @@ const VideoCard = ({ post }: IProps) => {
 					</Link>
 
 					{isHover && (
-						<div>
+						<div className='absolute bottom-6 cursor-pointer left-8 md:left-14 lg:left-0 flex gap-10 lg:justify-between w-[100px] md:w-[50px] p-3'>
 							{playing ? (
-								<button>
+								<button onClick={onVideoPress}>
 									<BsFillPauseFill className={videoIconStyles} />
 								</button>
 							) : (
-								<button>
+								<button onClick={onVideoPress}>
 									<BsFillPlayFill className={videoIconStyles} />
 								</button>
 							)}
 							{isVideoMuted ? (
-								<button>
+								<button onClick={() => setIsVideoMuted(false)}>
 									<HiVolumeOff className={videoIconStyles} />
 								</button>
 							) : (
-								<button>
+								<button onClick={() => setIsVideoMuted(true)}>
 									<HiVolumeUp className={videoIconStyles} />
 								</button>
 							)}
