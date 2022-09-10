@@ -14,4 +14,10 @@ To get the Profile pic and Username of profile
 
 npm i jwt-decode
 
-##
+## Zustand
+
+Redux alternative
+
+A small, fast and scalable bearbones state-management solution using simplified flux principles.
+
+https://zustand-demo.pmnd.rs/

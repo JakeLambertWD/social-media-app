@@ -7,6 +7,7 @@ import { BiSearch } from 'react-icons/bi';
 import { IoMdAdd } from 'react-icons/io';
 
 import Logo from '../utils/tiktik-logo.png';
+import { createOrGetUser } from '../utils';
 
 export const Navbar = () => {
 	const user = false;
@@ -27,7 +28,7 @@ export const Navbar = () => {
 				) : (
 					// This is the official Google login button
 					<GoogleLogin
-						onSuccess={response => console.log(response)}
+						onSuccess={response => createOrGetUser(response)}
 						onError={() => console.log('Error')}
 					/>
 				)}
