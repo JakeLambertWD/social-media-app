@@ -1,5 +1,6 @@
 import sanityClient from '@sanity/client';
 
+// we use the client to connect to Sanity
 export const client = sanityClient({
 	projectId: 'tfxwkkxs',
 	dataset: 'production',
