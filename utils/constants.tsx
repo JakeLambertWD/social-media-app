@@ -46,13 +46,7 @@ export const footerList1 = [
 	'ByteDance',
 	'Creator Directory'
 ];
-export const footerList2 = [
-	'TikTik for Good',
-	'Advertise',
-	'Developers',
-	'Transparency',
-	'TikTik Rewards'
-];
+export const footerList2 = ['Advertise', 'Developers', 'Transparency', 'Rewards'];
 export const footerList3 = [
 	'Help',
 	'Safety',
